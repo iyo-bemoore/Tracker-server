@@ -47,4 +47,4 @@ userSchema.methods.comparePassword = function(candidatePassword) {
   });
 };
 
-mongoose.model("user", userSchema);
+mongoose.model("User", userSchema);
