@@ -13,7 +13,7 @@ router.get("/tracks", async (req, res) => {
 });
 
 router.post("/tracks", async (req, res) => {
-  const { name, locations, distance } = req.body;
+  const { name, locations, snapShot, distance } = req.body;
 
   if (!name || !locations || !distance) {
     return res
@@ -21,7 +21,13 @@ router.post("/tracks", async (req, res) => {
       .send({ error: "You must provide a name and locations" });
   }
   try {
-    const track = new Track({ name, locations, distance, userId: req.user._id });
+    const track = new Track({
+      name,
+      locations,
+      snapShot,
+      distance,
+      userId: req.user._id
+    });
     await track.save();
     res.send(track);
   } catch (e) {

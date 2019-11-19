@@ -25,6 +25,10 @@ const trackShema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  snapShot: {
+    type: String,
+    dafault: ""
+  },
   locations: [pointShema]
 });
 
