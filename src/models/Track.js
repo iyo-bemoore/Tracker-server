@@ -29,6 +29,10 @@ const trackShema = new mongoose.Schema({
     type: String,
     dafault: ""
   },
+  seconds: {
+    type: Number,
+    default: 0
+  },
   locations: [pointShema]
 });
 
