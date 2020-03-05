@@ -29,7 +29,7 @@ const trackShema = new mongoose.Schema({
     type: String,
     dafault: ""
   },
-  seconds: {
+  timeElapsed: {
     type: Number,
     default: 0
   },

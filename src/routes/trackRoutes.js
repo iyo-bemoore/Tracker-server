@@ -13,9 +13,9 @@ router.get("/tracks", async (req, res) => {
 });
 
 router.post("/tracks", async (req, res) => {
-  const { name, locations, snapShot, distance, seconds } = req.body;
+  const { name, locations, snapShot, distance, timeElapsed } = req.body;
 
-  if (!name || !locations || !distance || !seconds) {
+  if (!name || !locations || !distance) {
     return res
       .status(422)
       .send({ error: "You must provide a name and locations" });
@@ -26,7 +26,7 @@ router.post("/tracks", async (req, res) => {
       locations,
       snapShot,
       distance,
-      seconds,
+      timeElapsed,
       userId: req.user._id
     });
     await track.save();
