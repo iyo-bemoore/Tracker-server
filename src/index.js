@@ -1,6 +1,7 @@
 require("./models/User");
 require("./models/Track");
 require("./models/Profile");
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -10,12 +11,13 @@ const profileRoutes = require("./routes/profileRoutes");
 const requireAuth = require("./middlewares/requireAuth");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 app.use(profileRoutes);
-const mongoURI =
-  "mongodb+srv://user:user@cluster0-rhx1q.mongodb.net/defaultUsers?retryWrites=true&w=majority";
+const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI, {
   useCreateIndex: true,
   useNewUrlParser: true,
@@ -30,6 +32,6 @@ mongoose.connection.on("error", e => {
 app.get("/", requireAuth, (req, res) => {
   res.send(`Your email is ${req.user.email}`);
 });
-app.listen(3000, () => {
-  console.log("Listening");
+app.listen(PORT, () => {
+  console.log(`Listening on  ${PORT}`);
 });
