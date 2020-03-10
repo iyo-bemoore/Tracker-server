@@ -30,7 +30,7 @@ const trackShema = new mongoose.Schema({
     dafault: ""
   },
   timeElapsed: {
-    type: Number,
+    type: String,
     default: 0
   },
   locations: [pointShema]
