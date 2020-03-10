@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 app.use(profileRoutes);
-const mongoURI = environment[NODE_ENV];
+const mongoURI = environment[process.env.NODE_ENV];
 mongoose.connect(mongoURI, {
   useCreateIndex: true,
   useNewUrlParser: true,
