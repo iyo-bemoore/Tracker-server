@@ -1,7 +1,7 @@
 require("./models/User");
 require("./models/Track");
 require("./models/Profile");
-require("dotenv").config();
+const environment = require("./config");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 app.use(profileRoutes);
-const mongoURI = process.env.MONGO_URI;
+const mongoURI = environment[NODE_ENV];
 mongoose.connect(mongoURI, {
   useCreateIndex: true,
   useNewUrlParser: true,
